@@ -19,7 +19,7 @@ class Todo {
 const [store] = useProxy({
   todos: [],
   visibility: 'all',
-  get visibleTodos () {
+  visibleTodos () {
     if (this.visibility === 'all') {
       return this.todos
     } else if (this.visibility === 'active') {
@@ -28,17 +28,17 @@ const [store] = useProxy({
       return this.todos.filter(todo => todo.completed)
     }
   },
-  get areAllDone () {
+  areAllDone () {
     return R.all(todo => todo.completed, this.todos)
   },
-  get leftCount () {
+  leftCount () {
     return this.todos.filter(todo => !todo.completed).length
   },
-  get doneCount () {
+  doneCount () {
     return this.todos.filter(todo => todo.completed).length
   },
   toggleAll () {
-    if (this.areAllDone) {
+    if (this.areAllDone()) {
       R.forEach(todo => { todo.completed = false }, this.todos)
     } else {
       R.forEach(todo => { todo.completed = true }, this.todos)

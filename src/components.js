@@ -58,10 +58,10 @@ export class Body extends Component {
     }
     return (
       <section className='main'>
-        <input id='toggle-all' className='toggle-all' type='checkbox' checked={store.areAllDone} onChange={e => store.toggleAll()} />
+        <input id='toggle-all' className='toggle-all' type='checkbox' checked={store.areAllDone()} onChange={e => store.toggleAll()} />
         <label htmlFor='toggle-all'>Mark all as complete</label>
         <ul className='todo-list'>
-          {store.visibleTodos.map(todo => <TodoItem store={store} todo={todo} key={todo.id} />)}
+          {store.visibleTodos().map(todo => <TodoItem store={store} todo={todo} key={todo.id} />)}
         </ul>
       </section>
     )
@@ -117,14 +117,14 @@ export class Footer extends Component {
     return (
       <footer className='footer'>
         <span className='todo-count'>
-          <strong>{pluralize('item', store.leftCount, true)}</strong> left
+          <strong>{pluralize('item', store.leftCount(), true)}</strong> left
         </span>
         <ul className='filters'>
           <li><a href='#/all' className={classNames({ selected: store.visibility === 'all' })}>All</a></li>
           <li><a href='#/active' className={classNames({ selected: store.visibility === 'active' })}>Active</a></li>
           <li><a href='#/completed' className={classNames({ selected: store.visibility === 'completed' })}>Completed</a></li>
         </ul>
-        {store.doneCount > 0 ? <button className='clear-completed' onClick={e => store.clearCompleted()}>Clear completed</button> : ''}
+        {store.doneCount() > 0 ? <button className='clear-completed' onClick={e => store.clearCompleted()}>Clear completed</button> : ''}
       </footer>
     )
   }
