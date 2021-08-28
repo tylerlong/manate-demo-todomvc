@@ -9,6 +9,7 @@ import ReactDOM from 'react-dom'
 import { Subject } from 'rxjs'
 const render$ = new Subject()
 global.render$ = render$
+render$.subscribe(console.log)
 /* DEV-END */
 
 export class App extends Component {
