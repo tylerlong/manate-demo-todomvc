@@ -1,5 +1,6 @@
 import React from 'react'
-import { Component } from 'react-subx'
+// import { Component } from 'react-subx'
+import {Component} from '@tylerlong/use-proxy/build/react'
 import classNames from 'classnames'
 import pluralize from 'pluralize'
 import ReactDOM from 'react-dom'
@@ -37,7 +38,7 @@ export class App extends Component {
         <footer className='info'>
           <p>Double-click to edit a todo</p>
           <p>Written by <a href='https://github.com/tylerlong'>Tyler Long</a></p>
-          <p><a href='https://github.com/tylerlong/subx-demo-todomvc'>Source code</a> available</p>
+          <p><a href='https://github.com/tylerlong/use-proxy-demo-todomvc'>Source code</a> available</p>
         </footer>
       </>
     )

@@ -1,13 +1,22 @@
-import SubX from 'subx'
+// import SubX from 'subx'
 import { v4 as uuid } from 'uuid'
 import * as R from 'ramda'
+import { useProxy } from '@tylerlong/use-proxy'
 
-export const Todo = SubX.model({
-  title: '',
-  completed: false
-})
+// export const Todo = SubX.model({
+//   title: '',
+//   completed: false
+// })
 
-const store = SubX.create({
+class Todo {
+  constructor(title, completed) {
+    this.title = title;
+    this.completed = completed;
+    this.id = uuid();
+  }
+}
+
+const [store] = useProxy({
   todos: [],
   visibility: 'all',
   get visibleTodos () {
@@ -38,7 +47,7 @@ const store = SubX.create({
   add (title) {
     title = title.trim()
     if (title !== '') {
-      this.todos.push(Todo.create({ title, id: uuid() }))
+      this.todos.push(new Todo(title, false))
     }
   },
   remove (todo) {
