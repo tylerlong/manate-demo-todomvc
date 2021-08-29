@@ -21,6 +21,6 @@ const savedTodos = global.localStorage.getItem(storageKey)
 if (savedTodos) {
   store.todos = JSON.parse(savedTodos).map(todo => new Todo(todo.title, todo.completed))
 }
-autoRun(emitter, debounce(() => global.localStorage.setItem(storageKey, JSON.stringify(store.todos)), 1000, {leading: true}))
+autoRun(emitter, debounce(() => global.localStorage.setItem(storageKey, JSON.stringify(store.todos)), 100, {leading: true}))
 
 ReactDOM.render(<App store={store} />, document.getElementById('container'))
