@@ -1,8 +1,9 @@
 {
   "name": "use-proxy-demo-todomvc",
-  "description": "React & SubX TodoMVC Example, SubX is the next generation state container",
-  "version": "3.0.0",
+  "description": "React & useProxy TodoMVC Example",
+  "version": "4.0.0",
   "license": "MIT",
+  "private": "true",
   "scripts": {
     "start": "webpack-dev-server --open --progress --colors",
     "release": "webpack --progress --colors --config webpack.config.prod.babel.js",

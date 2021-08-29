@@ -8,6 +8,8 @@ import { debounce } from 'lodash'
 import store, {emitter} from './store'
 import { App } from './components'
 
+const storageKey = 'todomvc-useProxy-todos'
+
 const router = new Router({
   '/all': () => { store.visibility = 'all' },
   '/active': () => { store.visibility = 'active' },
@@ -15,10 +17,10 @@ const router = new Router({
 })
 router.init()
 
-const savedTodos = global.localStorage.getItem('todomvc-subx-todos')
+const savedTodos = global.localStorage.getItem(storageKey)
 if (savedTodos) {
   store.todos = JSON.parse(savedTodos)
 }
-autoRun(emitter, debounce(() => global.localStorage.setItem('todomvc-subx-todos', JSON.stringify(store.todos)), 1000, {leading: true}))
+autoRun(emitter, debounce(() => global.localStorage.setItem(storageKey, JSON.stringify(store.todos)), 1000, {leading: true}))
 
 ReactDOM.render(<App store={store} />, document.getElementById('container'))

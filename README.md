@@ -11,15 +11,3 @@
 ## Credit
 
 This TodoMVC application was created by [Tyler Long](https://github.com/tylerlong).
-
-
-## Minimize rendering
-
-SubX can minimize rendering, it is one of its strengths. React components will not render until absolutely necessary.
-
-In **development** mode, we can watch the rendering in browser console
-
-
-## Todo
-
-- Persist user data
