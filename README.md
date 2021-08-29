@@ -11,3 +11,8 @@
 ## Credit
 
 This TodoMVC application was created by [Tyler Long](https://github.com/tylerlong).
+
+
+## Todo
+
+- Convert to TypeScript
