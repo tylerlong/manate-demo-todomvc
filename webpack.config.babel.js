@@ -3,6 +3,7 @@ import { HotModuleReplacementPlugin } from 'webpack'
 
 const config = {
   mode: 'development',
+  devtool: 'source-map',
   entry: './src/index.js',
   module: {
     rules: [
