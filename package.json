@@ -10,7 +10,7 @@
     "test": "jest -w 1"
   },
   "dependencies": {
-    "@tylerlong/use-proxy": "^0.5.3",
+    "@tylerlong/use-proxy": "^0.5.5",
     "classnames": "^2.2.6",
     "director": "^1.2.8",
     "pluralize": "^8.0.0",
