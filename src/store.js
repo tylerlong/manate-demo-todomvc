@@ -1,12 +1,6 @@
-// import SubX from 'subx'
 import { v4 as uuid } from 'uuid'
 import * as R from 'ramda'
 import { useProxy } from '@tylerlong/use-proxy'
-
-// export const Todo = SubX.model({
-//   title: '',
-//   completed: false
-// })
 
 class Todo {
   constructor(title, completed) {
@@ -19,7 +13,7 @@ class Todo {
 const [store] = useProxy({
   todos: [],
   visibility: 'all',
-  visibleTodos () {
+  get visibleTodos () {
     if (this.visibility === 'all') {
       return this.todos
     } else if (this.visibility === 'active') {
@@ -28,17 +22,17 @@ const [store] = useProxy({
       return this.todos.filter(todo => todo.completed)
     }
   },
-  areAllDone () {
+  get areAllDone () {
     return R.all(todo => todo.completed, this.todos)
   },
-  leftCount () {
+  get leftCount () {
     return this.todos.filter(todo => !todo.completed).length
   },
-  doneCount () {
+  get doneCount () {
     return this.todos.filter(todo => todo.completed).length
   },
   toggleAll () {
-    if (this.areAllDone()) {
+    if (this.areAllDone) {
       R.forEach(todo => { todo.completed = false }, this.todos)
     } else {
       R.forEach(todo => { todo.completed = true }, this.todos)

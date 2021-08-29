@@ -29,7 +29,7 @@ describe('parent', () => {
     await delay(15)
 
     const toggleAllButton = renderer.root.find(el => el.props.id === 'toggle-all')
-    expect(store.areAllDone()).toBeTruthy()
+    expect(store.areAllDone).toBeTruthy()
     expect(toggleAllButton.props.checked).toBeTruthy()
   })
 })
