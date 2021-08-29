@@ -79,7 +79,7 @@ export class TodoItem extends Component {
         <div className='view'>
           <input className='toggle' type='checkbox' checked={todo.completed} onChange={e => { todo.completed = e.target.checked }} />
           <label onDoubleClick={e => {
-            store.edit(todo)
+            todo.edit()
             setTimeout(() => ReactDOM.findDOMNode(this.refs.editField).focus(), 10)
           }}
           >{todo.title}
@@ -91,12 +91,12 @@ export class TodoItem extends Component {
           onChange={e => { todo.title = e.target.value }}
           onKeyUp={e => {
             if (e.key === 'Enter') {
-              store.doneEdit(todo)
+              todo.doneEdit()
             } else if (e.key === 'Escape') {
-              store.cancelEdit(todo)
+              todo.cancelEdit()
             }
           }}
-          onBlur={e => store.doneEdit(todo)}
+          onBlur={e => todo.doneEdit()}
         />
       </li>
     )

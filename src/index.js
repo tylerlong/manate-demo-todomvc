@@ -5,7 +5,7 @@ import 'todomvc-app-css/index.css'
 import { autoRun } from '@tylerlong/use-proxy'
 import { debounce } from 'lodash'
 
-import store, {emitter} from './store'
+import store, {emitter, Todo} from './store'
 import { App } from './components'
 
 const storageKey = 'todomvc-useProxy-todos'
@@ -19,7 +19,7 @@ router.init()
 
 const savedTodos = global.localStorage.getItem(storageKey)
 if (savedTodos) {
-  store.todos = JSON.parse(savedTodos)
+  store.todos = JSON.parse(savedTodos).map(todo => new Todo(todo.title, todo.complete))
 }
 autoRun(emitter, debounce(() => global.localStorage.setItem(storageKey, JSON.stringify(store.todos)), 1000, {leading: true}))
 

@@ -2,11 +2,28 @@ import { v4 as uuid } from 'uuid'
 import * as R from 'ramda'
 import { useProxy } from '@tylerlong/use-proxy'
 
-class Todo {
+export class Todo {
   constructor(title, completed) {
+    this.id = uuid();
     this.title = title;
     this.completed = completed;
-    this.id = uuid();
+  }
+
+  edit () {
+    this.cache = this.title
+  }
+
+  doneEdit () {
+    this.title = this.title.trim()
+    if (this.title === '') {
+      store.remove(this)
+    }
+    delete this.cache
+  }
+
+  cancelEdit () {
+    this.title = this.cache
+    delete this.cache
   }
 }
 
@@ -47,20 +64,6 @@ const [store, emitter] = useProxy({
   remove (todo) {
     const index = R.findIndex(t => t.id === todo.id, this.todos)
     this.todos.splice(index, 1)
-  },
-  edit (todo) {
-    todo.cache = todo.title
-  },
-  doneEdit (todo) {
-    delete todo.cache
-    todo.title = todo.title.trim()
-    if (todo.title === '') {
-      this.remove(todo)
-    }
-  },
-  cancelEdit (todo) {
-    todo.title = todo.cache
-    delete todo.cache
   },
   clearCompleted () {
     this.todos = this.todos.filter(todo => !todo.completed)
