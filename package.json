@@ -13,6 +13,7 @@
     "@tylerlong/use-proxy": "^0.6.0",
     "classnames": "^2.2.6",
     "director": "^1.2.8",
+    "lodash": "^4.17.21",
     "pluralize": "^8.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
