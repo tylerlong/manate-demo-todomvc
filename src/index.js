@@ -19,7 +19,7 @@ router.init()
 
 const savedTodos = global.localStorage.getItem(storageKey)
 if (savedTodos) {
-  store.todos = JSON.parse(savedTodos).map(todo => new Todo(todo.title, todo.complete))
+  store.todos = JSON.parse(savedTodos).map(todo => new Todo(todo.title, todo.completed))
 }
 autoRun(emitter, debounce(() => global.localStorage.setItem(storageKey, JSON.stringify(store.todos)), 1000, {leading: true}))
 
