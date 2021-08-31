@@ -7,7 +7,6 @@
   "scripts": {
     "serve": "webpack serve --progress --open",
     "release": "webpack --progress --config webpack.config.prod.babel.js",
-    "lint": "standard",
     "test": "jest -w 1"
   },
   "dependencies": {
@@ -27,36 +26,30 @@
     "@babel/preset-env": "^7.15.0",
     "@babel/preset-react": "^7.14.5",
     "@babel/register": "^7.15.3",
+    "@types/node": "^16.7.9",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^27.1.0",
     "babel-loader": "^8.2.2",
     "css-loader": "^6.2.0",
+    "gts": "^3.1.0",
     "html-webpack-plugin": "^5.3.2",
     "jest": "^27.1.0",
     "ramda": "^0.27.1",
     "react-test-renderer": "^17.0.2",
-    "standard": "^16.0.3",
     "style-loader": "^3.2.1",
     "timeout-as-promise": "^1.0.0",
+    "ts-loader": "^9.2.5",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.4.2",
     "webpack": "^5.51.1",
     "webpack-cli": "^4.8.0",
     "webpack-dev-server": "^4.1.0",
     "webpack-strip-block": "^0.3.0",
     "yarn-upgrade-all": "^0.5.4"
   },
-  "standard": {
-    "ignore": [
-      "/docs/"
-    ]
-  },
   "jest": {
     "setupFilesAfterEnv": [
       "./test/setup.js"
-    ]
-  },
-  "yarn-upgrade-all": {
-    "ignore": [
-      "babel-core"
     ]
   }
 }

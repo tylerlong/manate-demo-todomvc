@@ -1,20 +1,19 @@
-import HtmlWebpackPlugin from 'html-webpack-plugin'
-import { join } from 'path'
+/* eslint-disable node/no-unpublished-import */
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import {join} from 'path';
+import {Configuration} from 'webpack';
 
-const config = {
+const config: Configuration = {
   mode: 'production',
   entry: './src/index.js',
   output: {
-    path: join(__dirname, 'docs')
+    path: join(__dirname, 'docs'),
   },
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader'
-        ]
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.js$/,
@@ -25,23 +24,23 @@ const config = {
             loader: 'webpack-strip-block',
             options: {
               start: 'DEV-START',
-              end: 'DEV-END'
-            }
-          }
-        ]
+              end: 'DEV-END',
+            },
+          },
+        ],
       },
       {
         test: /\.js$/,
-        loader: 'babel-loader'
-      }
-    ]
+        loader: 'babel-loader',
+      },
+    ],
   },
   devtool: 'source-map',
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html'
-    })
-  ]
-}
+      template: './src/index.html',
+    }),
+  ],
+};
 
-export default [config]
+export default [config];
