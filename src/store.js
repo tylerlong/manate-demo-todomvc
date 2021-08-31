@@ -27,7 +27,7 @@ export class Todo {
   }
 }
 
-const [store, emitter] = useProxy({
+const store = useProxy({
   todos: [],
   visibility: 'all',
   get visibleTodos () {
@@ -70,5 +70,4 @@ const [store, emitter] = useProxy({
   }
 })
 
-export {emitter}
 export default store

@@ -1114,10 +1114,10 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@tylerlong/use-proxy@^0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@tylerlong/use-proxy/-/use-proxy-0.6.0.tgz#6e5197f35953b9e6f71f2fd5a1106569c5414de5"
-  integrity sha512-AY1BkSPpjylYGDDVeoizyaoWNF/8BafZHFnc3aw3+W7+NBu/Ce4T/Zwjce7sJbOXx0lm1ONhYpwRH8nW4TdXig==
+"@tylerlong/use-proxy@^0.6.2":
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/@tylerlong/use-proxy/-/use-proxy-0.6.2.tgz#149f4230f85a408d46b7cae2ecade997f45bf6db"
+  integrity sha512-C1KUEr8+oVo8kMuLu7UAGi8MZcYbzAHIgGtacKJTJ03kbkl2iVkdh9SYzNfgurn/Snmu3iXvvla6c2vCHc/Dug==
 
 "@types/anymatch@*":
   version "1.3.1"

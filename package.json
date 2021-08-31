@@ -11,7 +11,7 @@
     "test": "jest -w 1"
   },
   "dependencies": {
-    "@tylerlong/use-proxy": "^0.6.0",
+    "@tylerlong/use-proxy": "^0.6.2",
     "classnames": "^2.2.6",
     "director": "^1.2.8",
     "lodash": "^4.17.21",
