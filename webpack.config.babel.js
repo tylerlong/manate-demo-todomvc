@@ -22,12 +22,7 @@ const config = {
   },
   devtool: 'source-map',
   devServer: {
-    contentBase: './build',
     port: 6066,
-    overlay: {
-      warnings: true,
-      errors: true
-    },
     hot: true
   },
   plugins: [
