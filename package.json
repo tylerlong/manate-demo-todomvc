@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "@tylerlong/use-proxy": "^0.6.3",
+    "class-transformer": "^0.4.0",
     "classnames": "^2.3.1",
-    "director": "^1.2.8",
     "hyperid": "^2.3.1",
     "lodash": "^4.17.21",
     "pluralize": "^8.0.0",
@@ -24,6 +24,7 @@
   "devDependencies": {
     "@types/lodash": "^4.14.172",
     "@types/node": "^16.7.10",
+    "@types/pluralize": "^0.0.29",
     "@types/react": "^17.0.19",
     "@types/react-dom": "^17.0.9",
     "css-loader": "^6.2.0",

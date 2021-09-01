@@ -2,12 +2,12 @@ import React from 'react';
 import {Component} from '@tylerlong/use-proxy/build/react';
 import classNames from 'classnames';
 import pluralize from 'pluralize';
-import ReactDOM from 'react-dom';
 
 /* DEV-START */
 import {Subject} from 'rxjs';
+import {Store, Todo} from './store';
 const render$ = new Subject();
-global.render$ = render$;
+(global as any).render$ = render$;
 render$.subscribe(name => console.log(`render component <${name} />`));
 /* DEV-END */
 
@@ -57,7 +57,7 @@ export class App extends Component<{store: any}> {
   }
 }
 
-export class Body extends Component<{store: any}> {
+export class Body extends Component<{store: Store}> {
   name = 'Body';
 
   render() {
@@ -88,7 +88,8 @@ export class Body extends Component<{store: any}> {
   }
 }
 
-export class TodoItem extends Component<{store: any; todo: any}> {
+export class TodoItem extends Component<{store: Store; todo: Todo}> {
+  private editField: React.RefObject<HTMLInputElement> = React.createRef();
   name = 'TodoItem';
 
   render() {
@@ -115,10 +116,7 @@ export class TodoItem extends Component<{store: any; todo: any}> {
           <label
             onDoubleClick={e => {
               todo.edit();
-              setTimeout(
-                () => ReactDOM.findDOMNode(this.refs.editField).focus(),
-                10
-              );
+              setTimeout(() => this.editField.current!.focus(), 10);
             }}
           >
             {todo.title}
@@ -126,7 +124,7 @@ export class TodoItem extends Component<{store: any; todo: any}> {
           <button className="destroy" onClick={e => store.remove(todo)} />
         </div>
         <input
-          ref="editField"
+          ref={this.editField}
           className="edit"
           type="text"
           value={todo.title}
@@ -147,7 +145,7 @@ export class TodoItem extends Component<{store: any; todo: any}> {
   }
 }
 
-export class Footer extends Component<{store: any}> {
+export class Footer extends Component<{store: Store}> {
   name = 'Footer';
 
   render() {

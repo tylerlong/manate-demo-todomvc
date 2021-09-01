@@ -36,7 +36,7 @@ export class Todo {
   }
 }
 
-class Store {
+export class Store {
   todos: Todo[] = [];
   visibility = 'all';
 

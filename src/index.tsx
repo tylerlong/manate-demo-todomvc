@@ -1,38 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Router} from 'director/build/director';
 import 'todomvc-app-css/index.css';
 import {autoRun} from '@tylerlong/use-proxy';
 import {debounce} from 'lodash';
+import {plainToClassFromExist} from 'class-transformer';
 
-import store, {Todo} from './store';
+import store from './store';
 import {App} from './components';
 
 const storageKey = 'todomvc-useProxy-todos';
 
-const router = new Router({
-  '/all': () => {
-    store.visibility = 'all';
-  },
-  '/active': () => {
-    store.visibility = 'active';
-  },
-  '/completed': () => {
-    store.visibility = 'completed';
-  },
-});
-router.init();
-
-const savedTodos = global.localStorage.getItem(storageKey);
-if (savedTodos) {
-  store.todos = JSON.parse(savedTodos).map(
-    todo => new Todo(todo.title, todo.completed)
-  );
+const data = global.localStorage.getItem(storageKey);
+if (data) {
+  plainToClassFromExist(store, JSON.parse(data), {
+    excludeExtraneousValues: true,
+  });
 }
 autoRun(
   store,
   debounce(
-    () => global.localStorage.setItem(storageKey, JSON.stringify(store.todos)),
+    () => global.localStorage.setItem(storageKey, JSON.stringify(store)),
     100,
     {leading: true, trailing: true}
   )
