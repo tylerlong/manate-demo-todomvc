@@ -11,10 +11,11 @@ global.render$ = render$;
 render$.subscribe(name => console.log(`render component <${name} />`));
 /* DEV-END */
 
-export class App extends Component {
+export class App extends Component<{store: any}> {
+  name = 'App';
+
   render() {
     /* DEV-START */
-    this.name = 'App';
     render$.next(this.name);
     /* DEV-END */
     const store = this.props.store;
@@ -30,8 +31,8 @@ export class App extends Component {
               placeholder="What needs to be done?"
               onKeyUp={e => {
                 if (e.key === 'Enter') {
-                  store.add(e.target.value);
-                  e.target.value = '';
+                  store.add((e.target as HTMLInputElement).value);
+                  (e.target as HTMLInputElement).value = '';
                 }
               }}
             />
@@ -56,10 +57,11 @@ export class App extends Component {
   }
 }
 
-export class Body extends Component {
+export class Body extends Component<{store: any}> {
+  name = 'Body';
+
   render() {
     /* DEV-START */
-    this.name = 'Body';
     render$.next(this.name);
     /* DEV-END */
     const store = this.props.store;
@@ -86,10 +88,11 @@ export class Body extends Component {
   }
 }
 
-export class TodoItem extends Component {
+export class TodoItem extends Component<{store: any; todo: any}> {
+  name = 'TodoItem';
+
   render() {
     /* DEV-START */
-    this.name = 'TodoItem';
     render$.next(this.name);
     /* DEV-END */
     const {store, todo} = this.props;
@@ -144,10 +147,11 @@ export class TodoItem extends Component {
   }
 }
 
-export class Footer extends Component {
+export class Footer extends Component<{store: any}> {
+  name = 'Footer';
+
   render() {
     /* DEV-START */
-    this.name = 'Footer';
     render$.next(this.name);
     /* DEV-END */
     const store = this.props.store;

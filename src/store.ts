@@ -1,9 +1,18 @@
-import {v4 as uuid} from 'uuid';
-import * as R from 'ramda';
+/* eslint-disable node/no-unpublished-import */
+/* eslint-disable node/no-extraneous-import */
+import hyperid from 'hyperid';
+import _ from 'lodash';
 import {useProxy} from '@tylerlong/use-proxy';
 
+const uuid = hyperid();
+
 export class Todo {
-  constructor(title, completed) {
+  id: string;
+  title: string;
+  completed: boolean;
+  cache?: string;
+
+  constructor(title: string, completed: boolean) {
     this.id = uuid();
     this.title = title;
     this.completed = completed;
@@ -22,56 +31,66 @@ export class Todo {
   }
 
   cancelEdit() {
-    this.title = this.cache;
+    this.title = this.cache!;
     delete this.cache;
   }
 }
 
-const store = useProxy({
-  todos: [],
-  visibility: 'all',
+class Store {
+  todos: Todo[] = [];
+  visibility = 'all';
+
   get visibleTodos() {
     if (this.visibility === 'all') {
       return this.todos;
     } else if (this.visibility === 'active') {
-      return this.todos.filter(todo => !todo.completed);
+      return this.todos.filter((todo: Todo) => !todo.completed);
     } else if (this.visibility === 'completed') {
-      return this.todos.filter(todo => todo.completed);
+      return this.todos.filter((todo: Todo) => todo.completed);
     }
-  },
+    throw new Error(`Unknown visibility "${this.visibility}"`);
+  }
+
   get areAllDone() {
-    return R.all(todo => todo.completed, this.todos);
-  },
+    return _.every(this.todos, (todo: Todo) => todo.completed);
+  }
+
   get leftCount() {
-    return this.todos.filter(todo => !todo.completed).length;
-  },
+    return this.todos.filter((todo: Todo) => !todo.completed).length;
+  }
+
   get doneCount() {
-    return this.todos.filter(todo => todo.completed).length;
-  },
+    return this.todos.filter((todo: Todo) => todo.completed).length;
+  }
+
   toggleAll() {
     if (this.areAllDone) {
-      R.forEach(todo => {
+      _.forEach(this.todos, (todo: Todo) => {
         todo.completed = false;
-      }, this.todos);
+      });
     } else {
-      R.forEach(todo => {
+      _.forEach(this.todos, (todo: Todo) => {
         todo.completed = true;
-      }, this.todos);
+      });
     }
-  },
-  add(title) {
+  }
+
+  add(title: string) {
     title = title.trim();
     if (title !== '') {
       this.todos.push(new Todo(title, false));
     }
-  },
-  remove(todo) {
-    const index = R.findIndex(t => t.id === todo.id, this.todos);
-    this.todos.splice(index, 1);
-  },
-  clearCompleted() {
-    this.todos = this.todos.filter(todo => !todo.completed);
-  },
-});
+  }
 
+  remove(todo: Todo) {
+    const index = _.findIndex(this.todos, (t: Todo) => t.id === todo.id);
+    this.todos.splice(index, 1);
+  }
+
+  clearCompleted() {
+    this.todos = this.todos.filter((todo: Todo) => !todo.completed);
+  }
+}
+
+const store = useProxy(new Store());
 export default store;
