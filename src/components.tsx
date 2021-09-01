@@ -11,7 +11,7 @@ const render$ = new Subject();
 render$.subscribe(name => console.log(`render component <${name} />`));
 /* DEV-END */
 
-export class App extends Component<{store: any}> {
+export class App extends Component<{store: Store}> {
   name = 'App';
 
   render() {
@@ -75,7 +75,7 @@ export class Body extends Component<{store: Store}> {
           className="toggle-all"
           type="checkbox"
           checked={store.areAllDone}
-          onChange={e => store.toggleAll()}
+          onChange={() => store.toggleAll()}
         />
         <label htmlFor="toggle-all">Mark all as complete</label>
         <ul className="todo-list">
@@ -114,14 +114,14 @@ export class TodoItem extends Component<{store: Store; todo: Todo}> {
             }}
           />
           <label
-            onDoubleClick={e => {
+            onDoubleClick={() => {
               todo.edit();
               setTimeout(() => this.editField.current!.focus(), 10);
             }}
           >
             {todo.title}
           </label>
-          <button className="destroy" onClick={e => store.remove(todo)} />
+          <button className="destroy" onClick={() => store.remove(todo)} />
         </div>
         <input
           ref={this.editField}
@@ -138,7 +138,7 @@ export class TodoItem extends Component<{store: Store; todo: Todo}> {
               todo.cancelEdit();
             }
           }}
-          onBlur={e => todo.doneEdit()}
+          onBlur={() => todo.doneEdit()}
         />
       </li>
     );
@@ -164,7 +164,11 @@ export class Footer extends Component<{store: Store}> {
         <ul className="filters">
           <li>
             <a
-              href="#/all"
+              href="#"
+              onClick={e => {
+                e.preventDefault();
+                store.visibility = 'all';
+              }}
               className={classNames({selected: store.visibility === 'all'})}
             >
               All
@@ -172,7 +176,11 @@ export class Footer extends Component<{store: Store}> {
           </li>
           <li>
             <a
-              href="#/active"
+              href="#"
+              onClick={e => {
+                e.preventDefault();
+                store.visibility = 'active';
+              }}
               className={classNames({selected: store.visibility === 'active'})}
             >
               Active
@@ -180,7 +188,11 @@ export class Footer extends Component<{store: Store}> {
           </li>
           <li>
             <a
-              href="#/completed"
+              href="#"
+              onClick={e => {
+                e.preventDefault();
+                store.visibility = 'completed';
+              }}
               className={classNames({
                 selected: store.visibility === 'completed',
               })}
@@ -192,7 +204,7 @@ export class Footer extends Component<{store: Store}> {
         {store.doneCount > 0 ? (
           <button
             className="clear-completed"
-            onClick={e => store.clearCompleted()}
+            onClick={() => store.clearCompleted()}
           >
             Clear completed
           </button>
