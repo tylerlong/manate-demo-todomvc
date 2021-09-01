@@ -5,7 +5,7 @@ import {HotModuleReplacementPlugin, Configuration} from 'webpack';
 const config: Configuration = {
   mode: 'development',
   devtool: 'source-map',
-  entry: './src/index.js',
+  entry: './src/index.tsx',
   module: {
     rules: [
       {
@@ -13,17 +13,25 @@ const config: Configuration = {
         use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.js$/,
-        loader: 'babel-loader',
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'ts-loader',
+        },
       },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html',
+      title: 'useProxy • TodoMVC',
     }),
     new HotModuleReplacementPlugin(),
   ],
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js'],
+    // eslint-disable-next-line node/no-unpublished-require
+    fallback: {buffer: require.resolve('buffer/')},
+  },
 };
 
 export default [config];

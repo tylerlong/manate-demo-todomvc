@@ -1,10 +1,12 @@
 /* eslint-env jest */
-let start
+let start;
 
 beforeEach(() => {
-  start = new Date()
-})
+  start = new Date();
+});
 
 afterEach(() => {
-  expect(new Date() - start).toBeLessThanOrEqual(parseInt(process.env.BENCHMARK_THRESHOLD) || 200)
-})
+  expect(new Date() - start).toBeLessThanOrEqual(
+    parseInt(process.env.BENCHMARK_THRESHOLD) || 200
+  );
+});

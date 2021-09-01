@@ -5,7 +5,8 @@ import {Configuration} from 'webpack';
 
 const config: Configuration = {
   mode: 'production',
-  entry: './src/index.js',
+  devtool: 'source-map',
+  entry: './src/index.tsx',
   output: {
     path: join(__dirname, 'docs'),
   },
@@ -16,31 +17,24 @@ const config: Configuration = {
         use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.js$/,
-        enforce: 'pre',
-        exclude: /(node_modules|docs|test|\.spec\.js)/,
-        use: [
-          {
-            loader: 'webpack-strip-block',
-            options: {
-              start: 'DEV-START',
-              end: 'DEV-END',
-            },
-          },
-        ],
-      },
-      {
-        test: /\.js$/,
-        loader: 'babel-loader',
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'ts-loader',
+        },
       },
     ],
   },
-  devtool: 'source-map',
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html',
+      title: 'useProxy • TodoMVC',
     }),
   ],
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js'],
+    // eslint-disable-next-line node/no-unpublished-require
+    fallback: {buffer: require.resolve('buffer/')},
+  },
 };
 
-export default [config];
+export default config;
