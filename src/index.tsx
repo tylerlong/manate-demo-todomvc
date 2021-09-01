@@ -3,18 +3,19 @@ import ReactDOM from 'react-dom';
 import 'todomvc-app-css/index.css';
 import {autoRun} from '@tylerlong/use-proxy';
 import _ from 'lodash';
-import {plainToClassFromExist} from 'class-transformer';
 
-import store from './store';
+import store, {Todo} from './store';
 import {App} from './components';
 
 const storageKey = 'todomvc-useProxy-todos';
 
 const data = global.localStorage.getItem(storageKey);
 if (data) {
-  plainToClassFromExist(store, JSON.parse(data), {
-    excludeExtraneousValues: false, // todo: this should be true, but true will not populate todos
-  });
+  const json = JSON.parse(data);
+  store.visibility = json.visibility ?? 'all';
+  store.todos = json.todos.map(
+    (todo: Todo) => new Todo(todo.title, todo.completed)
+  );
 }
 const autoRunner = autoRun(
   store,

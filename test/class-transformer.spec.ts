@@ -19,9 +19,14 @@ class Todo {
     this.title = title;
     this.completed = completed;
   }
+  edit() {
+    this.title = 'editing';
+  }
 }
 
 const store = new Store();
 console.log(JSON.stringify(store));
 plainToClassFromExist(store, obj, {excludeExtraneousValues: false}); // change to true doesn't work
 console.log(JSON.stringify(store));
+store.todos[0].edit();
+console.log(store.todos[0].title);
