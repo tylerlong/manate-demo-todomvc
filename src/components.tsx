@@ -121,7 +121,7 @@ export class TodoItem extends Component<{store: Store; todo: Todo}> {
           >
             {todo.title}
           </label>
-          <button className="destroy" onClick={() => store.remove(todo)} />
+          <button className="destroy" onClick={() => todo.remove()} />
         </div>
         <input
           ref={this.editField}

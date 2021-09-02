@@ -25,7 +25,7 @@ export class Todo {
   doneEdit() {
     this.title = this.title.trim();
     if (this.title === '') {
-      store.remove(this);
+      this.remove();
     }
     delete this.cache;
   }
@@ -33,6 +33,10 @@ export class Todo {
   cancelEdit() {
     this.title = this.cache!;
     delete this.cache;
+  }
+
+  remove() {
+    store.todos = store.todos.filter(todo => todo.id !== this.id);
   }
 }
 
@@ -80,11 +84,6 @@ export class Store {
     if (title !== '') {
       this.todos.push(new Todo(title, false));
     }
-  }
-
-  remove(todo: Todo) {
-    const index = _.findIndex(this.todos, (t: Todo) => t.id === todo.id);
-    this.todos.splice(index, 1);
   }
 
   clearCompleted() {
