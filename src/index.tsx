@@ -13,16 +13,14 @@ const data = global.localStorage.getItem(storageKey);
 if (data) {
   const json = JSON.parse(data);
   store.visibility = json.visibility ?? 'all';
-  store.todos = json.todos.map(
+  store.todos = (json.todos || []).map(
     (todo: Todo) => new Todo(todo.title, todo.completed)
   );
 }
 const autoRunner = autoRun(
   store,
-  () => {
-    global.localStorage.setItem(storageKey, JSON.stringify(store));
-  },
-  (func: () => void) => _.debounce(func, 100, {leading: true, trailing: true})
+  () => global.localStorage.setItem(storageKey, JSON.stringify(store)),
+  func => _.debounce(func, 100, {leading: true, trailing: true})
 );
 autoRunner.start();
 
