@@ -27,7 +27,7 @@ const config: Configuration = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'useProxy • TodoMVC',
+      title: 'manate • TodoMVC',
     }),
   ],
   resolve: {

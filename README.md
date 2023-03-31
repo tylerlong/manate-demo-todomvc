@@ -1,13 +1,13 @@
-# React & useProxy TodoMVC Example
+# React & manate TodoMVC Example
 
-A demo TodoMVC project powered by [useProxy](https://github.com/tylerlong/use-proxy).
+A demo TodoMVC project powered by [manate](https://github.com/tylerlong/manate).
 
-[useProxy](https://github.com/tylerlong/use-proxy) is the counterpart of [useState](https://reactjs.org/docs/hooks-intro.html).
+[manate](https://github.com/tylerlong/manate) is the counterpart of [useState](https://reactjs.org/docs/hooks-intro.html).
 
-`useProxy` allows you to use React classes and manage your state in OOP style.
+`manate` allows you to use React classes and manage your state in OOP style.
 
 
-### [Live demo](https://chuntaoliu.com/use-proxy-demo-todomvc/)
+### [Live demo](https://chuntaoliu.com/manate-demo-todomvc/)
 
 
 ## Credit

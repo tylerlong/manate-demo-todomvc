@@ -1,5 +1,5 @@
 import React from 'react';
-import {Component} from '@tylerlong/use-proxy/build/react';
+import {Component} from 'manate/react';
 import classNames from 'classnames';
 import pluralize from 'pluralize';
 
@@ -46,7 +46,7 @@ export class App extends Component<{store: Store}> {
             Written by <a href="https://github.com/tylerlong">Tyler Long</a>
           </p>
           <p>
-            <a href="https://github.com/tylerlong/use-proxy-demo-todomvc">
+            <a href="https://github.com/tylerlong/manate-demo-todomvc">
               Source code
             </a>{' '}
             available
@@ -96,7 +96,7 @@ export class TodoItem extends Component<{store: Store; todo: Todo}> {
     /* DEV-START */
     render$.next(this.name);
     /* DEV-END */
-    const {store, todo} = this.props;
+    const {todo} = this.props;
     return (
       <li
         className={classNames('todo', {

@@ -2,7 +2,7 @@
 /* eslint-disable node/no-extraneous-import */
 import hyperid from 'hyperid';
 import _ from 'lodash';
-import {useProxy} from '@tylerlong/use-proxy';
+import {manage} from 'manate';
 
 const uuid = hyperid();
 
@@ -91,5 +91,5 @@ export class Store {
   }
 }
 
-const store = useProxy(new Store());
+const store = manage(new Store());
 export default store;

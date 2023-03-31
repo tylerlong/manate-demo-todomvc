@@ -612,11 +612,6 @@
   resolved "https://registry.yarnpkg.com/@tsconfig/node16/-/node16-1.0.2.tgz#423c77877d0569db20e1fc80885ac4118314010e"
   integrity sha512-eZxlbI8GZscaGS7kkc/trHTT5xgrjH3/1n2JDwusC9iahPKWMRvRjJSAN5mCXviuTGQ/lHnhvv8Q1YTpnfz9gA==
 
-"@tylerlong/use-proxy@^0.7.0":
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/@tylerlong/use-proxy/-/use-proxy-0.7.0.tgz#a80fe9c46a578b53cbb69fc42e9ce38a2cd4d879"
-  integrity sha512-bL1Ir5o2/aogupPiuoY3J+iBygnxph7AmY5Me6IitpmJQaNZWoLZtTpbzme/F+WARfrJU0nGcpkNg0YUN7gyMQ==
-
 "@types/babel__core@^7.0.0", "@types/babel__core@^7.1.14":
   version "7.1.16"
   resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.1.16.tgz#bc12c74b7d65e82d29876b5d0baf5c625ac58702"
@@ -3970,6 +3965,11 @@ makeerror@1.0.x:
   integrity sha1-4BpckQnyr3lmDk6LlYd5AYT1qWw=
   dependencies:
     tmpl "1.0.x"
+
+manate@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.npmjs.org/manate/-/manate-0.2.1.tgz#b270846404dbb77b3e2cc446676135dedac32e0f"
+  integrity sha512-OJS57Mvt+3DYk6VkQUwMdIkzlyKAd8xZN08a6334jalwkmULQdSWjlxpHdOQ6XACyhhzzRAeChCCo6EN0E2pCQ==
 
 map-obj@^1.0.0:
   version "1.0.1"
