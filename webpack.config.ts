@@ -1,6 +1,6 @@
 /* eslint-disable node/no-unpublished-import */
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import {HotModuleReplacementPlugin, Configuration} from 'webpack';
+import {Configuration} from 'webpack';
 
 const config: Configuration = {
   mode: 'development',
@@ -25,7 +25,6 @@ const config: Configuration = {
     new HtmlWebpackPlugin({
       title: 'manate • TodoMVC',
     }),
-    new HotModuleReplacementPlugin(),
   ],
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
