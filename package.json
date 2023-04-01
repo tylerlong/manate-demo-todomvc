@@ -8,7 +8,7 @@
     "node": ">=14"
   },
   "scripts": {
-    "serve": "webpack serve --progress --open",
+    "serve": "webpack serve --progress",
     "release": "webpack --progress --config webpack.config.prod.ts",
     "test": "jest -w 1"
   },

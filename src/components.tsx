@@ -80,7 +80,7 @@ export class Body extends Component<{store: Store}> {
         <label htmlFor="toggle-all">Mark all as complete</label>
         <ul className="todo-list">
           {store.visibleTodos.map(todo => (
-            <TodoItem store={store} todo={todo} key={todo.id} />
+            <TodoItem todo={todo} key={todo.id} />
           ))}
         </ul>
       </section>
@@ -88,7 +88,7 @@ export class Body extends Component<{store: Store}> {
   }
 }
 
-export class TodoItem extends Component<{store: Store; todo: Todo}> {
+export class TodoItem extends Component<{todo: Todo}> {
   private editField: React.RefObject<HTMLInputElement> = React.createRef();
   name = 'TodoItem';
 
@@ -96,7 +96,7 @@ export class TodoItem extends Component<{store: Store; todo: Todo}> {
     /* DEV-START */
     render$.next(this.name);
     /* DEV-END */
-    const {store, todo} = this.props;
+    const {todo} = this.props;
     return (
       <li
         className={classNames('todo', {

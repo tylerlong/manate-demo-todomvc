@@ -22,7 +22,8 @@ const autoRunner = autoRun(
   () => global.localStorage.setItem(storageKey, JSON.stringify(store)),
   func => _.debounce(func, 100, {leading: true, trailing: true})
 );
-autoRunner.start();
+// todo: enable it after debugging.
+// autoRunner.start();
 
 const container = document.createElement('div');
 document.body.appendChild(container);
