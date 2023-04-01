@@ -1,5 +1,3 @@
-/* eslint-disable node/no-unpublished-import */
-/* eslint-disable node/no-extraneous-import */
 import hyperid from 'hyperid';
 import _ from 'lodash';
 import {manage} from 'manate';
