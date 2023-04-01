@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import {createRoot} from 'react-dom/client';
 import 'todomvc-app-css/index.css';
 import {autoRun} from '@tylerlong/use-proxy';
 import _ from 'lodash';
@@ -26,4 +26,5 @@ autoRunner.start();
 
 const container = document.createElement('div');
 document.body.appendChild(container);
-ReactDOM.render(<App store={store} />, container);
+const root = createRoot(container);
+root.render(<App store={store} />);
